@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="HRMAn - Host Response to Microbe Analysis" />
+  <title>HRMAn - Host Response to Microbe Analysis</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+<!--<script src="ga.js"></script>-->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111014695-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111014695-1');
+</script>
+
+</head>
+
+<body>
+<!--<textarea theme="spacelab">-->
+<xmp theme="cerulean" style="display:none;">
+
+###[__Home__](index.html) : [__News__](news.html) : [__HRMAn2.0__](hrman2.html) : [__Sample data__](sample_data.html) : [__Downloads__](downloads.html) : [__Tutorials__](tutorials.html) : [__About us__](About_us.html)   
+
+###HRMAn 2.0 setup
+    
+####SETUP ON MacOS
+    
+__1.__ Download and install [KNIME Analytics platform](https://www.knime.com/download-installer/8/64bit), leaving the install path as default.
+    
+__2.__ Go to __Macintosh HD>Applications__, ctrl click on KNIME 4.3 and select "*Show Package Contents*". 
+    
+![Install_1](img/install/Install_1.png "Install_1")
+    
+Then navigate to __Contents>Eclipse__ and open the "*knime.ini*" file with a text editor. 
+    
+![Install_2](img/install/Install_2.png "Install_2")
+    
+Change the value in line 18 from *-Xmx2048m* to the maximum amount of RAM memory you can allow KNIME to use (e.g. *-Xmx16g for 16 GB*).
+        
+![Install_3](img/install/Install_3.png "Install_3")
+    
+The more the better. Save the changes in the file and close the finder Window.
+
+__3.__ Create a folder for your workspace somewhere convenient and which you will remember (e.g. __Desktop>KNIME_workspace__). This folder will be used to as your local KNIME workspace that holds all your future analysis pipelines, including HRMAn.
+
+    
+__4.__ Create a folder for your KNIME temporary files somewhere convenient and which you will remember (e.g. __Desktop>KNIME_temp__). __DO NOT ADD SPACES ANYWHERE IN YOUR FILEPATH NAMES__. This folder will be used by KNIME to write temporary files during the analysis. Sometimes the files can build up, so it’s a good idea to occasionally clear the contents of this folder (while KNIME is **NOT** running).
+    
+__5.__ Start KNIME Analytics platform. Upon the first start KNIME will as which folder to use for your local workspace. Navigate to the folder you have created in __step 3__, tick "*Use this as the default and do not ask again*" and confirm by clicking "*LAUNCH*".
+    
+![Install_4](img/install/Install_4.png "Install_4")
+    
+__6.__ Within KNIME Analytics platform, use the top menu bar and navigate to __KNIME>Preferences>KNIME__. 
+    
+![Install_5](img/install/Install_5.png "Install_5")
+    
+In the menu change the folder with your temporary files from the default to the folder you have created in __step 4__ by selecting "*Browse*" and navigating to the folder within Finder.   
+    
+![Install_6](img/install/Install_6.png "Install_6")
+    
+__7.__ *Optional*: Open the KNIME Preferences (see __step 6__) and go to __KNIME>KNIME GUI__. Here you can set the Console View Log Level to __INFO__, which will display more information when HRMAn is executing (e.g. progress of some python snippets). If you prefer a cleaner console, leave the level at __WARN__, otherwise decrease to __ERROR__ (not recommended).
+    
+![Install_7](img/install/Install_7.png "Install_7")   
+    
+__8.__ Next, open the KNIME Preferences (see __step 6__) and go to __Install/Update>Available Software sites__. In the menu make sure that all items are ticked (including "*KNIME Community Extensions (Trusted)*").
+    
+![Install_8](img/install/Install_8.png "Install_8")     
+    
+__9.__ To run HRMAn, Anaconda needs to be installed to manage the python environments. Download Anaconda from [__here__](https://repo.anaconda.com/archive/Anaconda3-2020.11-MacOSX-x86_64.pkg) and install leaving everything at default!!
+
+__10.__ Setup the python environments: First open a terminal window (hit <kbd>CMD</kbd>+<kbd>SPACE</kbd> and type terminal into the spotlight search). 
+
+![Install_9](img/install/Install_9.png "Install_9") 
+    
+Then one after another enter the following commands into the terminal window and confirm each one by pressing enter:
+    
+    conda create -n HRMAn python=3.6
+
+When conda asks you to proceed, type y and hit enter:
+    
+    proceed ([y]/n)?
+    
+![Install_10](img/install/Install_10.png "Install_10")
+    
+This creates a new python environment for HRMAn and KNIME which will hold all required packages. Next enter
+    
+    conda activate HRMAn
+    
+and confirm by pressing enter.
+    
+This will activate the environment and you should see in your terminal that __(base)__ has changed to __(HRMAn)__.
+
+![Install_11](img/install/Install_11.png "Install_11")    
+
+Next enter:
+    
+    pip install numpy==1.18.1 pandas==0.23.4 scipy==1.4.1 matplotlib==3.1.3 scikit-image==0.16.2 cellpose==0.6 openpyxl==3.0.3 tensorflow==1.12.0 keras==2.2.4 nvidia-ml-py3
+    
+and again press enter. This will install all necessary python packages into the HRMAn environment. This step might take a while depending on your computer and your internet connection. 
+    
+![Install_12](img/install/Install_12.png "Install_12")
+    
+Once completed you can close the terminal window.
+
+__11.__ Download HRMAn and the training workflow from here:
+    
+[HRMAn2.0](ADD LINK)
+    
+[CNN training for HRMAn2.0](ADD LINK)
+    
+[Template for bulk upload](ADD LINK)
+
+__12.__ Double click on the "*HRMAn2.0.knwf*" file in your Downloads folder which will open the workflow in KNIME. Upon the first opening of the workflow, KNIME will notify you that some software extensions are missing and ask to automatically search for extensions. Confirm this with "*Yes*", follow the installation and re-start KNIME when asked to.
+    
+![Install_13](img/install/Install_13.png "Install_13")
+    
+KNOWN ERROR: With newer versions of KNIME, it occasionally happens that the software packages cannot be obtained automatically as described above. This also affects __step 13__. In this case follow the instructions in __step 13__ to install new KNIME extensions. Overall make sure that the following extensions are installed:
+
++ Dropbox Nodes for KNIME
++ KNIME Deep Learning - Keras Integration	
++ KNIME Deep Learning - TensorFlow 2 Integration	
++ KNIME Deep Learning - TensorFlow Integration	
++ KNIME Excel Support	
++ KNIME Image Processing	
++ KNIME Image Processing - Deep Learning Extension	
++ KNIME Image Processing - ImageJ Integration (Beta)	
++ KNIME Image Processing - Python Extensions	
++ KNIME JavaScript Views	
++ KNIME Javasnippet	
++ KNIME Parallel Chunk Loop Nodes	
++ KNIME Python Integration	
++ KNIME Python Scripting extension	
++ Vernalis KNIME Nodes
+  
+__13.__ Once KNIME has re-started, use the top menu bar and go to __Help>Install New Software…__
+    
+![Install_14](img/install/Install_14.png "Install_14")
+    
+In the menu that opens, first untick the “*Hide items that are already installed*” tickbox on the bottom right.
+    
+![Install_15](img/install/Install_15.png "Install_15")
+    
+Then enter the following address into the “*Work with*” address bar: [*https://download.nodepit.com/dropbox/4.2*](https://download.nodepit.com/dropbox/4.2.). Next tick the tickbox for Dropbox nodes from the list. 
+    
+![Install_16](img/install/Install_16.png "Install_16")
+    
+Next navigate back to the address bar and select *--All available software Sites--* from the list and type “*python*” into the filter make sure that you tick the boxes next to __KNIME Python integration__, __KNIME Image processing – Python Extensions__, __KNIME Python Scripting extension__ (If they were already automatically installed they will appear greyed out and not selectable…all good then!).
+    
+![Install_17](img/install/Install_17.png "Install_17")
+    
+Then search for "*KERAS*" in the filter and tick the box next to __KNIME Deep Learning – Keras Integration__ (If it was already automatically installed it will appear greyed out and not selectable…all good then!). 
+    
+![Install_18](img/install/Install_18.png "Install_18")
+    
+Next, search for "*Image*" and select __KNIME Image Processing – Deep Learning Extension__.    
+    
+![Install_19](img/install/Install_19.png "Install_19")
+    
+Once you have made the selections above click on "*Next*", follow the installation and let KNIME re-start as prompted.
+    
+__14.__ When KNIME has re-started, open the KNIME Preferences (see __step 6__) and go to __KNIME>Python__. Make sure that "*Python 3*" and "*Conda*" are ticked in the top area of the menu. Next go to the "*Python 3 (Default)*" part of the menu and select HRMAn as Name of the Python 3 Conda environment (this was created in __step 10__).
+    
+__KNOWN ERROR__: Occasionally KNIME is unaibale to find the local Anaconda installation in the deafult path. If this is the case, navigate to to your "*Users*" folder in Finder and check if the folder "*opt*" contains your Anaconda 3 installation (Usually it is called "*anaconda3*"). If this is the case, within KNIME, point the program to this folder in the Python preferences menu described just above (Under "*Path to the Conda installation directory*").
+
+![Install_20](img/install/Install_20.png "Install_20")
+    
+*The occasional warning under "Python 2" can be ignored (this is not used by HRMAn).*
+
+Next, within the Preferences go to __KNIME>Python Deep Learning__. In the menu tick "*Use special Deep Learning configuration as defined below*". Make sure that "*Conda*" is ticked.
+    
+![Install_21](img/install/Install_21.png "Install_21")
+    
+Then click on the "*New environment…*" button in the Keras part of the menu and select "*Create new CPU environment*" in the menu that opens.
+    
+![Install_22](img/install/Install_22.png "Install_22")
+    
+This new environment should, once creation has completed, appear in the menu under "*Keras*". *The occasional warning under TensorFlow 2 can be ignored (this is not used by HRMAn).* 
+
+__15.__ Once again double click on the "*HRMAn2.0.knwf*" file in your Downloads folder which will open the workflow in KNIME. This time no error messages should appear. On top of the workflow view, there will be a yellow ribbon warning that the workflow has not been saved yet. 
+
+![Install_23](img/install/Install_23.png "Install_23")
+    
+Click on "*Save as*" within the yellow ribbon and save it as __HRMAn2.0__ into your local workspace (__Local>HRMAN2.0__). 
+    
+![Install_24](img/install/Install_24.png "Install_24")
+    
+Repeat this step with the "*CNN-training-for-HRMAN2.0.knwf*" file in your Download folder.
+
+####Congrats! You’re now fully set up to run HRMAn on your Mac!
+
+   
+</xmp>                  
+<br><br>
+<h5 style="color: #317eac; line-height: 28px; font-size: 18pt; font-family: 'Telex',sans-serif; text-align: center"> Copyright &copy; 2017 - <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> <a href="https://frickellab.com/" style="color: #2fa4e7">HRMAn team</a>,<br><a href="https://www.crick.ac.uk/" style="color: #2fa4e7">The Francis Crick Institute,<br>London</a></h5>
+
+<script src="v/0.2/strapdown.js"></script>
+
+</body>
+</html>

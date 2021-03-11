@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="HRMAn - Host Response to Microbe Analysis" />
+  <title>HRMAn - Host Response to Microbe Analysis</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+<!--<script src="ga.js"></script>-->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111014695-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111014695-1');
+</script>
+
+</head>
+
+<body>
+<!--<textarea theme="spacelab">-->
+<xmp theme="cerulean" style="display:none;">
+
+###[__Home__](index.html) : [__News__](news.html) : [__HRMAn2.0__](hrman2.html) : [__Sample data__](sample_data.html) : [__Downloads__](downloads.html) : [__Tutorials__](tutorials.html) : [__About us__](About_us.html)   
+    
+###HRMAn 2.0 setup
+In general, HRMAn 2.0 uses KNIME Analytics platform to run. However, since KNIME connects to several external programs in the background, some extra software needs to be installed in order to run HRMAn properly and fast. This overview will guide you through the installation and all necessary setup steps.
+
+__Depending on your exact computer setup (hardware and operating system) please chose from the guides below:__
+
+####[MacOS](hrman2mac.html)
+
+####[Windows](hrman2win.html)
+
+####[Windows with GPU acceleration (NVIDIA CUDA)](hrman2wingpu.html)
+    
+(The latter is recommended to unlock HRMAn’s full potential and allow for training of deep neural networks as well as usage of Cellpose for cell segmentation).
+    
+
+###Using HRMAn 2.0
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ga0TvmFLqFc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+This video will guide you through your first image analysis with HRMAn 2.0. Please refer to the links above to find more information on how to set up KNIME and HRMAn 2.0.
+
+###Training CNNs for HRMAn 2.0
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/3gGUwFsdFUk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+This video will show you how to train your own neural network for use in HRMAn 2.0 within KNIME. In order to use GPU training in KNIME for your model you need to have a Nvidia graphics card and CUDA installed. Please follow the setup guidelines above. 
+    
+
+
+
+
+   
+</xmp>                  
+<br><br>
+<h5 style="color: #317eac; line-height: 28px; font-size: 18pt; font-family: 'Telex',sans-serif; text-align: center"> Copyright &copy; 2017 - <script type="text/javascript">var year = new Date(); document.write(year.getFullYear());</script> <a href="https://frickellab.com/" style="color: #2fa4e7">HRMAn team</a>,<br><a href="https://www.crick.ac.uk/" style="color: #2fa4e7">The Francis Crick Institute,<br>London</a></h5>
+
+<script src="v/0.2/strapdown.js"></script>
+
+</body>
+</html>
