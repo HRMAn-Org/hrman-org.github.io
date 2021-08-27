@@ -43,7 +43,11 @@ Change the value in line 18 from *-Xmx2048m* to the maximum amount of RAM memory
         
 ![Install_27](img/install/Install_27.png "Install_27")
     
-The more the better. Save the changes in the file and close the Explorer Window.
+The more the better. 
+
+OPTIONAL: Add "-Dknime.dl.installationtesttimeout=60000" to the last line of the .ini file. Some user have reported an error when using HRMAn which is caused by long loading times of the deep learning environment. Adding this line should resolve this issue.
+
+Save the changes in the file and close the Explorer Window.
 
 __3.__ Create a folder for your workspace somewhere convenient and which you will remember (e.g. __Desktop>KNIME_workspace__). This folder will be used to as your local KNIME workspace that holds all your future analysis pipelines, including HRMAn.
 
